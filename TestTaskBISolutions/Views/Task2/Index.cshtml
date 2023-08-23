@@ -1,0 +1,10 @@
+﻿@model bool
+<form asp-controller="Task2" asp-action="Index">
+<h>Введите слово</h>
+<input type="text" name="str" value=@ViewBag.Str></input>
+<button type="submit">Проверить</button>
+</form>
+@if (ViewBag.Str != null)
+{
+    <p>@(Model ? $"Cлово {ViewBag.Str} является полиндромом" : $"Cлово {ViewBag.Str} не является полиндромом")</p>
+}

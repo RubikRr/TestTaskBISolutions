@@ -1,0 +1,10 @@
+﻿@model int
+<form asp-controller="Task1" asp-action="Index">
+    <h2>Введите числа через пробел</h2>
+    <input type="text" name="numbers"></input>
+    <button type="submit">Посчитать</button>
+</form>
+@if (ViewBag.Numbers != null)
+{
+    <h2>Сумма @Model</h2>
+}

@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using TestTaskBISolutions.Data;
+using TestTaskBISolutions.Interfaces;
+using TestTaskBISolutions.Storages;
+
 namespace TestTaskBISolutions
 {
     public class Program
@@ -7,8 +12,10 @@ namespace TestTaskBISolutions
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            string connection = builder.Configuration.GetConnectionString("ToDo");
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
+            builder.Services.AddTransient<IToDoListStorage,ToDoListStorage>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

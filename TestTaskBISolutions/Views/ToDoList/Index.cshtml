@@ -1,1 +1,6 @@
-﻿<p>привет</p>
+﻿@model List<ToDo>
+@foreach (var toDo in Model)
+{
+ <p>@toDo.Content</p>   
+}
+<a asp-controller="ToDoList" asp-action="Add">Создать</a>

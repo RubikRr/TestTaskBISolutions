@@ -28,5 +28,21 @@ namespace TestTaskBISolutions.Controllers
            toDoListStorage.Add(content);
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Edit(Guid id)
+        {
+            var toDo = toDoListStorage.GetById(id);
+            return View(toDo);
+        }
+        [HttpPost]
+        public IActionResult Edit(ToDo newContent)
+        {
+            toDoListStorage.Edit(newContent);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Delete(Guid id)
+        {
+            toDoListStorage.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

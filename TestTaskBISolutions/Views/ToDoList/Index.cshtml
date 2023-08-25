@@ -1,6 +1,31 @@
 ﻿@model List<ToDo>
-@foreach (var toDo in Model)
-{
- <p>@toDo.Content</p>   
-}
-<a asp-controller="ToDoList" asp-action="Add">Создать</a>
+<div class="row">
+	<div class="col-12 card">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Content</th>
+					<th>Date and time of creating</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var toDo in Model)
+				{
+					<tr>
+						<th class="w-50">@toDo.Content</th>
+						<th>@toDo.DateTimeCreating</th>
+						<th>
+							<a class="btn btn-primary"  asp-controller="ToDoList" asp-action="Edit" asp-route-id="@toDo.Id">Edit</a>
+							<a class="btn btn-danger"  asp-controller="ToDoList" asp-action="Delete" asp-route-id="@toDo.Id">Delete</a>
+						</th>
+					</tr>
+				}				
+			</tbody>			
+		</table>		
+	</div>
+	<p></p>
+	<a role="button" class="btn btn-success" style="width:150px" asp-controller="ToDoList" asp-action="Add">Add</a>
+</div>
+
+

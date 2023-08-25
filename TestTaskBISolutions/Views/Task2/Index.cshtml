@@ -4,7 +4,7 @@
 
     <form asp-controller="Task2" asp-action="Index">
         <div class="col-12">
-            <h2>Введите слово</h2>
+            <h2>Введите строку</h2>
         </div>
         <div class="col-4 mb-1">
             <input type="text" name="str" class="input-group"></input>
@@ -16,7 +16,7 @@
         <div class="col-4">
             @if (ViewBag.Str != null)
             {
-                <h2>@(Model ? $"Cлово {ViewBag.Str} является полиндромом" : $"Cлово {ViewBag.Str} не является полиндромом")</h2>
+                <h2>@(Model ? $"{ViewBag.Str} является полиндромом" : $"{ViewBag.Str} не является полиндромом")</h2>
             }
         </div>
     </form>

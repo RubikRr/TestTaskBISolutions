@@ -11,7 +11,6 @@ namespace TestTaskBISolutions
         private LinkedListNode head;
         private LinkedListNode tail;
 
-
         public void Add(int data)
         {
             var newNode = new LinkedListNode(data);

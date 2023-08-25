@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Linq;
 using TestTaskBISolutions.Models;
 namespace TestTaskBISolutions.Controllers
 {
@@ -13,6 +14,10 @@ namespace TestTaskBISolutions.Controllers
         [HttpPost]
         public IActionResult Index(string str)
         {
+            if (string.IsNullOrEmpty(str))
+            {
+                return View();
+            }
             ViewBag.Str = str;
             return View(nameof(Index), IsPalindrome(str));
             
@@ -20,10 +25,12 @@ namespace TestTaskBISolutions.Controllers
 
         public bool IsPalindrome(string str)
         {
-            int length = str.Length;
+            
+            var normolizeStr = string.Join("", str.ToLower().Trim().Split().Where(s => !string.IsNullOrEmpty(s)));
+            int length = normolizeStr.Length;
             for (int i = 0; i < length; i++)
             {
-                if (str[i] != str[^(i + 1)])
+                if (normolizeStr[i] != normolizeStr[^(i + 1)])
                     return false;
             }
             return true;

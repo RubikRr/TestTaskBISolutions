@@ -17,12 +17,7 @@ namespace TestTaskBISolutions.Controllers
             ViewBag.OriginalLinkedList = originalLinkedList;
             linkedList.Sort();
             var ans = linkedList.ToString();
-            //foreach (var item in linkedList)
-            //{
-            //    ans+= item.ToString()+" ";
-            //}
             return View(nameof(Index),ans);
-           
         }
     }
 }

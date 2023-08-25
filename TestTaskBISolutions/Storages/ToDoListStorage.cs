@@ -22,6 +22,7 @@ namespace TestTaskBISolutions.Storages
 		{
 			var existingtoDo = GetById(newToDo.Id);
 			existingtoDo.Content = newToDo.Content;
+            existingtoDo.DateTimeCreating = DateTime.Now;
 			databaseContext.SaveChanges();
 		}
 
